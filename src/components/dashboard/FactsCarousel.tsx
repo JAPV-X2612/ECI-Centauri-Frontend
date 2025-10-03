@@ -20,7 +20,7 @@ export const FactsCarousel: React.FC<FactsCarouselProps> = ({
   onPrevious, 
   onNext 
 }) => (
-  <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-lg rounded-xl p-4 border border-blue-500/30">
+  <div className="bg-gradient-to-br from-blue-900/30 to-nasa-900/30 backdrop-blur-lg rounded-xl p-4 border border-blue-500/30">
     <h3 className="text-sm font-semibold mb-2">💡 Did You Know?</h3>
     <p className="text-xs text-gray-300 leading-relaxed mb-3">
       {EXOPLANET_FACTS[currentIndex]}
@@ -28,7 +28,7 @@ export const FactsCarousel: React.FC<FactsCarouselProps> = ({
     <div className="flex justify-between items-center">
       <button 
         onClick={onPrevious} 
-        className="text-xs text-purple-400 hover:text-purple-300"
+        className="text-xs text-nasa-400 hover:text-nasa-300"
       >
         ← Previous
       </button>
@@ -36,13 +36,13 @@ export const FactsCarousel: React.FC<FactsCarouselProps> = ({
         {EXOPLANET_FACTS.map((_, i) => (
           <div 
             key={i} 
-            className={`w-1.5 h-1.5 rounded-full ${i === currentIndex ? 'bg-purple-400' : 'bg-gray-600'}`} 
+            className={`w-1.5 h-1.5 rounded-full ${i === currentIndex ? 'bg-nasa-400' : 'bg-gray-600'}`} 
           />
         ))}
       </div>
       <button 
         onClick={onNext} 
-        className="text-xs text-purple-400 hover:text-purple-300"
+        className="text-xs text-nasa-400 hover:text-nasa-300"
       >
         Next →
       </button>
