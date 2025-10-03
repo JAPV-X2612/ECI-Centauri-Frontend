@@ -13,11 +13,11 @@ interface TransitLightCurveProps {
  * SVG-based visualization of exoplanet transit light curve
  */
 export const TransitLightCurve: React.FC<TransitLightCurveProps> = ({ isAnalyzing }) => (
-  <div className="bg-slate-800/50 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20 h-96">
+  <div className="bg-slate-800/50 backdrop-blur-lg rounded-xl p-6 border border-nasa-500/20 h-96">
     <div className="flex items-center justify-between mb-4">
       <h3 className="text-lg font-semibold">Transit Light Curve</h3>
     </div>
-    <div className="relative h-64 bg-slate-900/50 rounded-lg border border-purple-500/10 overflow-hidden">
+    <div className="relative h-64 bg-slate-900/50 rounded-lg border border-nasa-500/10 overflow-hidden">
       <svg className="w-full h-full" viewBox="0 0 800 250">
         <path 
           d="M 0 125 L 200 125 L 250 145 L 300 145 L 350 125 L 800 125" 
@@ -55,8 +55,8 @@ export const TransitLightCurve: React.FC<TransitLightCurveProps> = ({ isAnalyzin
       {isAnalyzing && (
         <div className="absolute inset-0 bg-slate-900/80 flex items-center justify-center">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
-            <p className="text-sm text-purple-300">Analyzing transit pattern...</p>
+            <div className="w-12 h-12 border-4 border-nasa-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+            <p className="text-sm text-nasa-300">Analyzing transit pattern...</p>
           </div>
         </div>
       )}

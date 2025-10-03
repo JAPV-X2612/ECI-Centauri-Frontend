@@ -13,19 +13,19 @@ interface ForgotPasswordPageProps {
 
 export const ForgotPasswordPage: React.FC<ForgotPasswordPageProps> = ({ onBackToLogin }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-nasa-900 to-slate-900 flex items-center justify-center p-6">
       <StarsBg />
       <div className="relative z-10 w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl">
+          <div className="w-20 h-20 bg-gradient-to-br from-nasa-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl">
             <Lock className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-nasa-400 to-blue-400 bg-clip-text text-transparent mb-2">
             Reset Password
           </h1>
           <p className="text-gray-400 text-sm">Enter your email to receive a reset link</p>
         </div>
-        <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border border-purple-500/20 shadow-2xl">
+        <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border border-nasa-500/20 shadow-2xl">
           <div className="space-y-5">
             <div>
               <label className="text-sm text-gray-300 mb-2 block">Email Address</label>
@@ -33,12 +33,12 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordPageProps> = ({ onBackTo
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="email"
-                  className="w-full bg-slate-700/50 border border-purple-500/20 rounded-lg pl-11 pr-4 py-3 text-white focus:outline-none focus:border-purple-500"
+                  className="w-full bg-slate-700/50 border border-nasa-500/20 rounded-lg pl-11 pr-4 py-3 text-white focus:outline-none focus:border-nasa-500"
                   placeholder="your.email@example.com"
                 />
               </div>
             </div>
-            <button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-lg py-3 font-semibold transition-all shadow-lg">
+            <button className="w-full bg-gradient-to-r from-nasa-600 to-blue-600 hover:from-nasa-700 hover:to-blue-700 rounded-lg py-3 font-semibold transition-all shadow-lg">
               Send Reset Link
             </button>
             <button

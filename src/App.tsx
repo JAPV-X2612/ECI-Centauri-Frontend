@@ -49,7 +49,7 @@ import type { ViewType } from './types';
 
 const ExoplanetHunterApp: React.FC = () => {
   // View state management
-  const [view, setView] = useState<ViewType>('main');
+  const [view, setView] = useState<ViewType>('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   // Analysis state
@@ -79,7 +79,6 @@ const ExoplanetHunterApp: React.FC = () => {
    */
   const handleShare = () => {
     shareModal.open();
-    setTimeout(() => shareModal.close(), 3000);
   };
 
   /**
@@ -103,7 +102,7 @@ const ExoplanetHunterApp: React.FC = () => {
    */
   const handleSignOut = () => {
     setIsLoggedIn(false);
-    setView('main');
+    setView('login');
   };
 
   /**
@@ -160,7 +159,7 @@ const ExoplanetHunterApp: React.FC = () => {
 
   // Main dashboard view
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
       <StarsBg />
       
       <Header
@@ -205,7 +204,7 @@ const ExoplanetHunterApp: React.FC = () => {
       
       {/* Modals */}
       <AboutUsModal isOpen={aboutModal.isOpen} onClose={aboutModal.close} />
-      <ShareModal isOpen={shareModal.isOpen} />
+      <ShareModal isOpen={shareModal.isOpen} onClose={shareModal.close} />
     </div>
   );
 };

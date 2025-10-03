@@ -15,6 +15,7 @@ export interface TeamMember {
   name: string;
   github: string;
   photo: string;
+  photoUrl?: string; // Optional: URL to actual profile photo
 }
 
 /**
