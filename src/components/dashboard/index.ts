@@ -13,3 +13,4 @@ export { NewsPanel } from './NewsPanel';
 export { FactsCarousel } from './FactsCarousel';
 export { ActionButtons } from './ActionButtons';
 export { PlanetVisualization } from './PlanetVisualization';
+export { NASAImagery } from './NASAImagery';
