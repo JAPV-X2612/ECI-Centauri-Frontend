@@ -2,7 +2,7 @@
 
 <!-- Logo placeholder -->
 <div align="center">
-  <img src="public/logo512.png" alt="Exoplanet Hunter AI Logo" width="20%">
+  <img src="public/eci-centauri-logo-blue.png" alt="ECI Centauri - Exoplanet Hunter AI Logo" width="30%">
 </div>
 
 <div align="center">

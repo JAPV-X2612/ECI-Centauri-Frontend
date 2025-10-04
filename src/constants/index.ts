@@ -21,12 +21,12 @@ export const EXOPLANET_FACTS: string[] = [
  * ECI Centauri team members information
  */
 export const TEAM_MEMBERS: TeamMember[] = [
-  { name: "Laura Sofia Zapata Sarmiento", github: "", photo: "LSZ" },
-  { name: "Juan Esteban Bolivar Muñoz", github: "", photo: "JEB" },
-  { name: "Camilo Andrés Maldonado López", github: "", photo: "CAM", photoUrl: "/camilo-profile-photo.jpg" },
-  { name: "Daniel Felipe Martinez Hernandez", github: "Ch0comilo", photo: "DFM", photoUrl: "/daniel-profile-photo.png" },
-  { name: "Jesús Alfonso Pinzón Vega", github: "JAPV-X2612", photo: "JAP", photoUrl: "/jesus-profile-photo.jpg" },
-  { name: "Andersson David Sánchez Méndez", github: "AnderssonProgramming", photo: "ADS" }
+  { name: "Laura Sofia Zapata Sarmiento", github: "", photo: "sofia-profile-photo.jpg" },
+  { name: "Juan Esteban Bolivar Muñoz", github: "", photo: "juan-profile-photo.jpg" },
+  { name: "Camilo Andrés Maldonado López", github: "", photo: "camilo-profile-photo.jpg" },
+  { name: "Daniel Felipe Martinez Hernandez", github: "Ch0comilo", photo: "daniel-profile-photo.png" },
+  { name: "Jesús Alfonso Pinzón Vega", github: "JAPV-X2612", photo: "jesus-profile-photo.jpg" },
+  { name: "Andersson David Sánchez Méndez", github: "AnderssonProgramming", photo: "andersson-profile-photo.jpeg" }
 ];
 
 /**
