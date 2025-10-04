@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import {
-  Database, Calendar, Award, Zap, Activity, Search, Filter, Download,
+  Calendar, Award, Zap, Activity, Search, Filter, Download,
   Star, Trash2, Edit, X, Upload, Save
 } from 'lucide-react';
 import { StarsBg } from '../components/common';
@@ -38,8 +38,12 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div onClick={onBackToMain} className="w-10 h-10 bg-gradient-to-br from-nasa-500 to-blue-500 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-                <Database className="w-6 h-6" />
+              <div onClick={onBackToMain} className="w-10 h-10 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                <img 
+                  src="/eci-centauri-logo-blue.png" 
+                  alt="ECI Centauri Logo" 
+                  className="h-10 w-auto"
+                />
               </div>
               <h1 className="text-xl font-bold text-white">Exoplanet Hunter AI - My Profile</h1>
             </div>

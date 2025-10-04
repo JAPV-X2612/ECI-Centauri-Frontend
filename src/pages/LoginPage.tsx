@@ -30,8 +30,12 @@ export const LoginPage: React.FC<LoginPageProps> = ({
       <StarsBg />
       <div className="relative z-10 w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-nasa-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl">
-            <Database className="w-10 h-10 text-white" />
+          <div className="mx-auto mb-6 flex justify-center">
+            <img 
+              src="/eci-centauri-logo-blue.png" 
+              alt="ECI Centauri Logo" 
+              className="h-24 w-auto"
+            />
           </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-nasa-400 to-blue-400 bg-clip-text text-transparent mb-2">
             Exoplanet Hunter AI
