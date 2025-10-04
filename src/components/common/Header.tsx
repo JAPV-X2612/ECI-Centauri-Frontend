@@ -11,6 +11,7 @@ interface HeaderProps {
   isLoggedIn: boolean;
   userData?: UserData;
   onAboutClick: () => void;
+  onReferencesClick: () => void;
   onSignInClick: () => void;
   onProfileClick: () => void;
 }
@@ -21,7 +22,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ 
   isLoggedIn, 
   userData, 
-  onAboutClick, 
+  onAboutClick,
+  onReferencesClick,
   onSignInClick,
   onProfileClick 
 }) => (
@@ -51,6 +53,12 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
         <div className="flex items-center gap-4">
+          <button 
+            onClick={onReferencesClick} 
+            className="px-4 py-2 hover:bg-nasa-500/20 rounded-lg transition-colors"
+          >
+            References
+          </button>
           <button 
             onClick={onAboutClick} 
             className="px-4 py-2 hover:bg-nasa-500/20 rounded-lg transition-colors"

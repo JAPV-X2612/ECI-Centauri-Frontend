@@ -12,7 +12,7 @@
  */
 
 import React, { useState } from 'react';
-import { StarsBg, Header, Footer, AboutUsModal, ShareModal } from './components/common';
+import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal } from './components/common';
 import { 
   TransitLightCurve, 
   AIPrediction, 
@@ -42,6 +42,7 @@ const ExoplanetHunterApp: React.FC = () => {
   
   // Modal management
   const aboutModal = useModal();
+  const referencesModal = useModal();
   const shareModal = useModal();
   
   // Facts carousel
@@ -149,6 +150,7 @@ const ExoplanetHunterApp: React.FC = () => {
       <Header
         isLoggedIn={isLoggedIn}
         userData={isLoggedIn ? userData : undefined}
+        onReferencesClick={referencesModal.open}
         onAboutClick={aboutModal.open}
         onSignInClick={() => setView('login')}
         onProfileClick={() => setView('profile')}
@@ -213,6 +215,7 @@ const ExoplanetHunterApp: React.FC = () => {
       <Footer />
       
       {/* Modals */}
+      <ReferencesModal isOpen={referencesModal.isOpen} onClose={referencesModal.close} />
       <AboutUsModal isOpen={aboutModal.isOpen} onClose={aboutModal.close} />
       <ShareModal isOpen={shareModal.isOpen} onClose={shareModal.close} />
     </div>
