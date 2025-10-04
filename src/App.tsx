@@ -184,6 +184,31 @@ const ExoplanetHunterApp: React.FC = () => {
           <div className="col-span-6 space-y-4">
             <TransitLightCurve isAnalyzing={isAnalyzing} />
             <AIPrediction confidence={confidence} />
+            
+            {/* Transit Exoplanet Animation */}
+            <div className="bg-gradient-to-br from-nasa-900/30 to-blue-900/30 backdrop-blur-lg rounded-xl p-6 border border-nasa-500/30">
+              <h3 className="text-lg font-semibold mb-4 text-nasa-400">Transit Method Visualization</h3>
+              <div className="flex justify-center">
+                <a 
+                  href="https://github.com/yuliang419/Astronet-Vetting" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block hover:opacity-80 transition-opacity cursor-pointer"
+                  title="View source: Astronet-Vetting by yuliang419"
+                >
+                  <img 
+                    src="/transit-exoplanet.gif" 
+                    alt="Exoplanet Transit Animation" 
+                    className="w-full h-auto rounded-lg"
+                  />
+                </a>
+              </div>
+              <p className="text-sm text-gray-400 mt-3 text-center">
+                Watch how an exoplanet passing in front of its star causes a dip in brightness
+                <br />
+                <span className="text-xs text-gray-500">Credit: <a href="https://github.com/yuliang419/Astronet-Vetting" target="_blank" rel="noopener noreferrer" className="text-nasa-400 hover:text-nasa-300 underline">Astronet-Vetting by yuliang419</a></span>
+              </p>
+            </div>
           </div>
           
           {/* Right Sidebar */}
