@@ -1,22 +1,5 @@
 /**
- * Main import React, { useState } from 'react';
-import { StarsBg, Header, Footer, AboutUsModal, ShareModal } from './components/common';
-import { 
-  TransitLightCurve, 
-  AIPrediction, 
-  QuickActions, 
-  ModelSettings, 
-  TodayStats, 
-  ModelPerformance, 
-  NewsPanel, 
-  FactsCarousel, 
-  ActionButtons, 
-  PlanetVisualization 
-} from './components/dashboard';
-import { LoginPage } from './pages';
-import { useCyclicIndex, useModal } from './hooks';
-import { EXOPLANET_FACTS, MOCK_USER_DATA } from './constants';
-import type { ViewType } from './types';oplanet Hunter AI
+ * Main Exoplanet Hunter AI
  * NASA Space Apps Challenge 2025
  * 
  * This is the refactored main application component with clean architecture.
@@ -40,7 +23,8 @@ import {
   NewsPanel, 
   FactsCarousel, 
   ActionButtons, 
-  PlanetVisualization 
+  PlanetVisualization,
+  NASAImagery 
 } from './components/dashboard';
 import { LoginPage, SignupPage, ForgotPasswordPage, ProfilePage } from './pages';
 import { useCyclicIndex, useModal } from './hooks';
@@ -178,6 +162,7 @@ const ExoplanetHunterApp: React.FC = () => {
             <PlanetVisualization />
             <ModelSettings />
             <TodayStats />
+            <NASAImagery />
           </div>
           
           {/* Center Content */}

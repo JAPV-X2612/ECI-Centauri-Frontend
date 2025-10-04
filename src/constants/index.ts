@@ -28,7 +28,7 @@ export const EXOPLANET_FACTS: string[] = [
 export const TEAM_MEMBERS: TeamMember[] = [
   { name: "Laura Sofia Zapata Sarmiento", github: "minisoffia", photo: "LS", photoUrl: "/sofia-profile-photo.jpg" },
   { name: "Juan Esteban Bolivar Muñoz", github: "jdev2443-cmd", photo: "JE", photoUrl: "/juan-profile-photo.jpg" },
-  { name: "Camilo Andrés Maldonado López", github: "", photo: "CA", photoUrl: "/camilo-profile-photo.jpg" },
+  { name: "Camilo Andrés Maldonado López", github: "camilo-byte", photo: "CA", photoUrl: "/camilo-profile-photo.jpg" },
   { name: "Daniel Felipe Martinez Hernandez", github: "Ch0comilo", photo: "DF", photoUrl: "/daniel-profile-photo.png" },
   { name: "Jesús Alfonso Pinzón Vega", github: "JAPV-X2612", photo: "JA", photoUrl: "/jesus-profile-photo.jpg" },
   { name: "Andersson David Sánchez Méndez", github: "AnderssonProgramming", photo: "AD", photoUrl: "/andersson-profile-photo.jpeg" }
