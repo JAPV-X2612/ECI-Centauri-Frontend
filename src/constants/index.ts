@@ -9,12 +9,17 @@ import { TeamMember, NewsItem, UserData, AnalysisHistoryItem, Achievement, Activ
  * Educational facts about exoplanets
  */
 export const EXOPLANET_FACTS: string[] = [
-  "The transit method detects exoplanets by measuring the slight dimming of a star's light when a planet passes in front of it. Even Earth would only block 0.008% of the Sun's light!",
-  "The first exoplanet discovered around a sun-like star was 51 Pegasi b in 1995, which revolutionized our understanding of planetary systems.",
-  "Hot Jupiters are gas giants that orbit very close to their stars, completing an orbit in just a few days compared to Jupiter's 12-year orbit.",
-  "The Kepler Space Telescope discovered over 2,600 confirmed exoplanets during its mission from 2009 to 2018.",
-  "Some exoplanets orbit two stars at once, called circumbinary planets - just like Tatooine in Star Wars!",
-  "TESS (Transiting Exoplanet Survey Satellite) is scanning 200,000 of the brightest stars near Earth for transiting exoplanets."
+  "In case you didn't know, an exoplanet is a celestial body outside our solar system (hence the name exoplanet) that has been discovered through analysis and data collection using telescopes, probes, and satellites that humanity has sent out over time.",
+  "The first confirmed discovery of an exoplanet was in 1992 around the pulsar PSR B1257+12 using the pulse timing variation method.",
+  "The transit or light detection method works by detecting the drop in brightness of the star when the planet passes directly in front of it. This method is very well known and is traditionally used by space telescopes such as Kepler and TESS.",
+  "The radial velocity method is a method of detecting exoplanets that works by measuring changes in the light of the star caused by the gravitational pull of the planet. This is a significant method that helped identify 51 Pegasi b.",
+  "Did you know that 51 Pegasi b was the first exoplanet confirmed in 1995 using the radial velocity method, and its discovery was more important than just being the first, as it was also the first to be discovered in a system with a star similar to our sun?",
+  "One of the most talked-about exoplanets is Proxima Centauri b, due to its high similarity to our planet, as it shares characteristics such as both belonging to the habitable zone of their system, as well as being the closest to us at a distance of approximately 4.24 light-years.",
+  "Did you know that the smallest confirmed exoplanet is Kepler-37 b, with a radial size similar to that of our moon?",
+  "Did you know that the largest exoplanet ever recorded is HD 100536 b, which is larger than Jupiter, approximately 8 times larger.",
+  "An exoplanet similar to Earth in terms of location is Kepler-186f, which, like us, is located within the habitable zone of its solar system.",
+  "Did you know that Kepler-16b has two suns, around which it orbits, much like the planet Tatooine in Star Wars?",
+  "Did you know that the exoplanet WASP-12b is considered one of the most exotic exoplanets ever recorded? This is because this exoplanet absorbs large amounts of light, making it very difficult to track, so much so that it has earned the nickname 'black planet.'"
 ];
 
 /**
@@ -34,25 +39,39 @@ export const TEAM_MEMBERS: TeamMember[] = [
  */
 export const COMMUNITY_NEWS: NewsItem[] = [
   { 
-    title: "New Super-Earth Discovery", 
-    author: "Dr. Emily Parker", 
-    source: "Space.com", 
-    url: "https://www.space.com", 
-    time: "2 hours ago" 
-  },
-  { 
-    title: "AI Breakthrough in Planet Detection", 
-    author: "NASA JPL Team", 
-    source: "NASA News", 
-    url: "https://www.nasa.gov", 
-    time: "5 hours ago" 
-  },
-  { 
-    title: "Habitable Zone Planet Found", 
-    author: "Prof. James Mitchell", 
+    title: "NASA Confirms 6,000th Exoplanet Discovery Milestone", 
+    author: "Shawn Domagal-Goldman", 
     source: "Science Daily", 
-    url: "https://www.sciencedaily.com", 
-    time: "1 day ago" 
+    url: "https://www.sciencedaily.com/releases/2025/09/250920214427.htm", 
+    time: "2 weeks ago" 
+  },
+  { 
+    title: "AI Predicts Exoplanets Using Transformer Architecture", 
+    author: "Prof. Yann Alibert", 
+    source: "Phys.org", 
+    url: "https://phys.org/news/2025-09-ai-discovery-exoplanets-distant.html", 
+    time: "3 weeks ago" 
+  },
+  { 
+    title: "JWST Narrows Atmosphere Possibilities for TRAPPIST-1e", 
+    author: "Dr. Néstor Espinoza", 
+    source: "Phys.org", 
+    url: "https://phys.org/news/2025-09-trappist-1e-narrow-possibilities-atmosphere.html", 
+    time: "1 month ago" 
+  },
+  { 
+    title: "Two Earth-Sized Rocky Exoplanets Found Around TOI-2322", 
+    author: "ESPRESSO Team", 
+    source: "Phys.org", 
+    url: "https://phys.org/news/2025-09-tess-reveals-rocky-earth-sized.html", 
+    time: "1 month ago" 
+  },
+  { 
+    title: "New Gas Giant TOI-4465b Confirmed with Citizen Scientists", 
+    author: "Dr. Zahra Essack", 
+    source: "Phys.org", 
+    url: "https://phys.org/news/2025-06-astronomers-gas-giant-exoplanet-citizen.html", 
+    time: "4 months ago" 
   }
 ];
 
