@@ -35,44 +35,109 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
               <X className="w-6 h-6" />
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-6">
-            {TEAM_MEMBERS.map((member, i) => (
-              <div key={i} className="bg-slate-700/50 rounded-xl p-4 border border-blue-500/30">
+          
+          {/* Pyramid Layout: Coach at top, then 3-3 team members */}
+          <div className="space-y-6">
+            {/* Coach - Top of pyramid */}
+            {TEAM_MEMBERS.filter(member => member.role === 'Coach').map((member) => (
+              <div key={member.name} className="bg-slate-700/50 rounded-xl p-4 border border-nasa-400/50 max-w-2xl mx-auto">
                 <div className="flex items-center gap-4">
                   {member.photoUrl ? (
                     <img 
                       src={member.photoUrl} 
                       alt={`${member.name} profile`}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
+                      className="w-20 h-20 rounded-full object-cover border-2 border-nasa-400"
                     />
                   ) : (
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-lg font-bold">
+                    <div className="w-20 h-20 bg-gradient-to-br from-nasa-600 to-nasa-400 rounded-full flex items-center justify-center text-lg font-bold">
                       {member.photo}
                     </div>
                   )}
                   <div className="flex-1">
-                    <div className="font-semibold text-white">{member.name}</div>
-                    {member.github ? (
-                      <a 
-                        href={`https://github.com/${member.github}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1"
-                      >
-                        <Github className="w-3 h-3" />
-                        {member.github}
-                      </a>
-                    ) : (
-                      <div className="text-sm text-gray-400 flex items-center gap-1">
-                        <Github className="w-3 h-3" />
-                        No GitHub profile yet
-                      </div>
-                    )}
+                    <div className="font-semibold text-white text-lg">{member.name}</div>
+                    <div className="text-sm font-medium text-nasa-400 mb-1">
+                      {member.role}
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      Team Mentor & Advisor
+                    </div>
                     <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
                   </div>
                 </div>
               </div>
             ))}
+            
+            {/* Team Members - First row of 3 */}
+            <div className="grid grid-cols-3 gap-4">
+              {TEAM_MEMBERS.filter(member => !member.role).slice(0, 3).map((member) => (
+                <div key={member.name} className="bg-slate-700/50 rounded-xl p-4 border border-blue-500/30">
+                  <div className="flex flex-col items-center text-center gap-3">
+                    {member.photoUrl ? (
+                      <img 
+                        src={member.photoUrl} 
+                        alt={`${member.name} profile`}
+                        className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-lg font-bold">
+                        {member.photo}
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <div className="font-semibold text-white text-sm">{member.name}</div>
+                      {member.github && (
+                        <a 
+                          href={`https://github.com/${member.github}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 mt-1"
+                        >
+                          <Github className="w-3 h-3" />
+                          {member.github}
+                        </a>
+                      )}
+                      <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Team Members - Second row of 3 */}
+            <div className="grid grid-cols-3 gap-4">
+              {TEAM_MEMBERS.filter(member => !member.role).slice(3, 6).map((member) => (
+                <div key={member.name} className="bg-slate-700/50 rounded-xl p-4 border border-blue-500/30">
+                  <div className="flex flex-col items-center text-center gap-3">
+                    {member.photoUrl ? (
+                      <img 
+                        src={member.photoUrl} 
+                        alt={`${member.name} profile`}
+                        className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-lg font-bold">
+                        {member.photo}
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <div className="font-semibold text-white text-sm">{member.name}</div>
+                      {member.github && (
+                        <a 
+                          href={`https://github.com/${member.github}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 mt-1"
+                        >
+                          <Github className="w-3 h-3" />
+                          {member.github}
+                        </a>
+                      )}
+                      <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
