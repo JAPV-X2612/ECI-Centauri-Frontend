@@ -12,7 +12,7 @@
  */
 
 import React, { useState } from 'react';
-import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal, SpaceChatbot } from './components/common';
+import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal, HelpModal, SpaceChatbot } from './components/common';
 import { 
   TransitLightCurve, 
   AIPrediction, 
@@ -42,6 +42,7 @@ const ExoplanetHunterApp: React.FC = () => {
   
   // Modal management
   const aboutModal = useModal();
+  const helpModal = useModal();
   const referencesModal = useModal();
   const shareModal = useModal();
   
@@ -150,6 +151,7 @@ const ExoplanetHunterApp: React.FC = () => {
       <Header
         isLoggedIn={isLoggedIn}
         userData={isLoggedIn ? userData : undefined}
+        onHelpClick={helpModal.open}
         onReferencesClick={referencesModal.open}
         onAboutClick={aboutModal.open}
         onSignInClick={() => setView('login')}
@@ -162,7 +164,6 @@ const ExoplanetHunterApp: React.FC = () => {
           <div className="col-span-3 space-y-4">
             <QuickActions onAnalyzeDemo={analyzeDemo} />
             <PlanetVisualization />
-            <ModelSettings />
             <TodayStats />
             <NASAImagery />
           </div>
@@ -201,6 +202,7 @@ const ExoplanetHunterApp: React.FC = () => {
           {/* Right Sidebar */}
           <div className="col-span-3 space-y-4">
             <ModelPerformance />
+            <ModelSettings />
             <NewsPanel />
             <FactsCarousel
               currentIndex={factsCarousel.currentIndex}
@@ -215,6 +217,7 @@ const ExoplanetHunterApp: React.FC = () => {
       <Footer />
       
       {/* Modals */}
+      <HelpModal isOpen={helpModal.isOpen} onClose={helpModal.close} />
       <ReferencesModal isOpen={referencesModal.isOpen} onClose={referencesModal.close} />
       <AboutUsModal isOpen={aboutModal.isOpen} onClose={aboutModal.close} />
       <ShareModal isOpen={shareModal.isOpen} onClose={shareModal.close} />
