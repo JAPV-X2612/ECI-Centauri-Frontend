@@ -1,0 +1,8 @@
+Model Information:
+* title:	Pixel Planet Kepler-186-f
+* source:	https://sketchfab.com/3d-models/pixel-planet-kepler-186-f-81a4b533cb2e426d85a17a3793a9420e
+* author:	AstroJar (https://sketchfab.com/AstroJar)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

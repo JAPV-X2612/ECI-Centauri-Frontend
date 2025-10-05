@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import { Brain, Database } from 'lucide-react';
 import { NASA_CHALLENGE_URL } from '../../constants';
 import { UserData } from '../../types';
 
@@ -12,6 +11,8 @@ interface HeaderProps {
   isLoggedIn: boolean;
   userData?: UserData;
   onAboutClick: () => void;
+  onHelpClick: () => void;
+  onReferencesClick: () => void;
   onSignInClick: () => void;
   onProfileClick: () => void;
 }
@@ -22,7 +23,9 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ 
   isLoggedIn, 
   userData, 
-  onAboutClick, 
+  onAboutClick,
+  onHelpClick,
+  onReferencesClick,
   onSignInClick,
   onProfileClick 
 }) => (
@@ -30,8 +33,12 @@ export const Header: React.FC<HeaderProps> = ({
     <div className="max-w-7xl mx-auto px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-gradient-to-br from-nasa-500 to-blue-500 rounded-lg flex items-center justify-center">
-            <Brain className="w-7 h-7" />
+          <div className="w-12 h-12 flex items-center justify-center">
+            <img 
+              src="/eci-centauri-logo-blue.png" 
+              alt="ECI Centauri Logo" 
+              className="h-12 w-auto"
+            />
           </div>
           <div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-nasa-400 to-blue-400 bg-clip-text text-transparent">
@@ -48,6 +55,18 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
         <div className="flex items-center gap-4">
+          <button 
+            onClick={onHelpClick} 
+            className="px-4 py-2 hover:bg-nasa-500/20 rounded-lg transition-colors"
+          >
+            Help
+          </button>
+          <button 
+            onClick={onReferencesClick} 
+            className="px-4 py-2 hover:bg-nasa-500/20 rounded-lg transition-colors"
+          >
+            References
+          </button>
           <button 
             onClick={onAboutClick} 
             className="px-4 py-2 hover:bg-nasa-500/20 rounded-lg transition-colors"
@@ -90,9 +109,13 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ onBackClick, onSig
         <div className="flex items-center gap-3">
           <div 
             onClick={onBackClick} 
-            className="w-10 h-10 bg-gradient-to-br from-nasa-500 to-blue-500 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+            className="w-10 h-10 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <Database className="w-6 h-6" />
+            <img 
+              src="/eci-centauri-logo-blue.png" 
+              alt="ECI Centauri Logo" 
+              className="h-10 w-auto"
+            />
           </div>
           <h1 className="text-xl font-bold text-white">Exoplanet Hunter AI - My Profile</h1>
         </div>

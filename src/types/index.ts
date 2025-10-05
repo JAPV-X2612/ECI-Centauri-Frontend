@@ -13,7 +13,8 @@ export type ViewType = 'main' | 'login' | 'signup' | 'forgot' | 'profile';
  */
 export interface TeamMember {
   name: string;
-  github: string;
+  github?: string; // Optional: GitHub username
+  role?: string; // Optional: Special role (e.g., "Coach")
   photo: string;
   photoUrl?: string; // Optional: URL to actual profile photo
 }
