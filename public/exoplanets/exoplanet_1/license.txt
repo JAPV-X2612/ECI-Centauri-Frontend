@@ -1,0 +1,11 @@
+Model Information:
+* title:	Exoplanet SG10446623
+* source:	https://sketchfab.com/3d-models/exoplanet-sg10446623-128ba361498049e9b12baede75bf7b5a
+* author:	tamminen (https://sketchfab.com/tamminen)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Exoplanet SG10446623" (https://sketchfab.com/3d-models/exoplanet-sg10446623-128ba361498049e9b12baede75bf7b5a) by tamminen (https://sketchfab.com/tamminen) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

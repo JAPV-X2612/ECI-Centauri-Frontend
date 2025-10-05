@@ -1,0 +1,11 @@
+Model Information:
+* title:	Kepler 22b
+* source:	https://sketchfab.com/3d-models/kepler-22b-3589154676b7465c815a4aa1d8c4354a
+* author:	per.rb1 (https://sketchfab.com/per.rb1)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Kepler 22b" (https://sketchfab.com/3d-models/kepler-22b-3589154676b7465c815a4aa1d8c4354a) by per.rb1 (https://sketchfab.com/per.rb1) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
