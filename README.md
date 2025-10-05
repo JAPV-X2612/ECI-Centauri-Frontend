@@ -68,24 +68,60 @@ The application features a **NASA-themed dark blue design**, **responsive UI**, 
 - **Global leaderboard** rankings
 
 ### 🤖 **AI Integration**
-- **Multiple model types**: CNN, SVM, RL, RF
+- **CNN Model**: Convolutional Neural Network specifically trained for exoplanet detection
 - **Real-time predictions** with confidence metrics
-- **Model performance visualization**
-- **Hyperparameter tuning** interface
-- **Analysis export** (CSV, XLSX, PDF)
+- **Model performance visualization** with accuracy, loss, and metrics charts
+- **FITS file upload support** with data source selection (TESS, Kepler, K2)
+- **Analysis export** in CSV and XLSX formats
 
 ### 📊 **Data Visualization**
-- **Transit light curve** plotting with animation
-- **Planet visualization** with 3D-like effects
-- **Model performance metrics** (accuracy, precision, recall)
+- **Transit light curve** plotting with real-time animation
+- **3D exoplanet models** viewer with 5 different GLTF models
+  - Auto-rotation every 20 seconds between models
+  - Manual model selection with navigation buttons
+  - Interactive camera controls and smooth transitions
+  - Optimized zoom levels for each model
+- **Model performance metrics** (accuracy, precision, recall, F1-score)
 - **Statistical summaries** of analysis results
-- **Interactive charts** with hover details
+- **Interactive charts** with hover details and tooltips
 
-### 📰 **Community Features**
+### 🌍 **NASA API Integration**
+- **NASA WMTS (Web Map Tile Service)** for lunar imagery
+  - Real-time Moon surface visualization
+  - Tile-based map rendering
+  - Zoom and pan controls
+  - Environment variable configuration for API keys
+
+### � **Data Import/Export**
+- **FITS file upload** with validation (.fits format only)
+- **Data source selection**: TESS, Kepler, K2 telescope missions
+- **Export formats**: CSV (data analysis) and XLSX (Excel spreadsheets)
+- **Format preview** with detailed descriptions
+
+### �📰 **Community & Sharing Features**
 - **News panel** with latest exoplanet discoveries
-- **Educational facts carousel** about exoplanets
-- **Share discoveries** with copy-to-clipboard functionality
-- **About Us** section with team profiles and GitHub links
+- **Educational facts carousel** with 11 comprehensive exoplanet facts
+- **Share discoveries** with dual functionality:
+  - Copy-to-clipboard for instant link sharing
+  - **QR Code generation** with unique session IDs for each user
+  - Download QR codes as PNG images
+  - Automatic URL generation with session tracking
+- **About Us** section with pyramid team structure:
+  - Coach profile at the top
+  - Team members organized in rows (3-3 layout)
+  - Profile photos with GitHub links
+  - University branding integration
+- **References modal** with comprehensive bibliography:
+  - 21 bibliographic references in APA 7th format
+  - 3 AI/ML tool acknowledgments
+  - Organized by categories
+  
+### 🎬 **Interactive Elements**
+- **Transit GIF visualization** with clickable GitHub attribution
+- **Animated star background** for immersive space experience
+- **Loading states** and progress indicators
+- **Modal system** for About Us, Share, and References
+- **Responsive card designs** with hover effects
 
 ---
 
@@ -101,6 +137,8 @@ The application features a **NASA-themed dark blue design**, **responsive UI**, 
 - **Custom NASA Theme** - Extended color palette with nasa-50 to nasa-900
 - **Lucide React** `0.544.0` - Beautiful, consistent icon library
 - **CSS Animations** - Custom keyframes for star background
+- **QRCode** `1.5.4` - QR code generation for sharing functionality
+- **Google Model Viewer** `3.3.0` - 3D GLTF model rendering via CDN
 
 ### **State Management**
 - **React Hooks** (useState, useEffect, custom hooks)
@@ -200,9 +238,10 @@ yarn install
 ```
 
 This command will:
-- Install all production dependencies (React, Tailwind CSS, Lucide React)
+- Install all production dependencies (React, Tailwind CSS, Lucide React, QRCode)
 - Install development dependencies (TypeScript types, testing libraries)
 - Set up Tailwind CSS PostCSS configuration
+- Configure Google Model Viewer for 3D models (loaded via CDN)
 
 ### **3️⃣ Verify Installation**
 
@@ -216,7 +255,9 @@ You should see:
 - ✅ react@19.1.1
 - ✅ tailwindcss@3.4.1
 - ✅ lucide-react@0.544.0
+- ✅ qrcode@1.5.4
 - ✅ @types/react@19.1.17
+- ✅ @types/qrcode@1.5.5
 
 ---
 
@@ -251,19 +292,30 @@ module.exports = {
 }
 ```
 
-### **2️⃣ Environment Variables** _(Optional)_
+### **2️⃣ Environment Variables**
 
-Create `.env` file in the root directory for API configuration:
+Create `.env` file in the root directory for API and NASA configuration:
 
 ```bash
-# API Configuration (Future Backend Integration)
+# API Configuration (Backend Integration)
 REACT_APP_API_URL=http://localhost:8000/api/v1
 REACT_APP_API_TIMEOUT=30000
+
+# NASA API Configuration
+REACT_APP_NASA_WMTS_URL=https://gibs.earthdata.nasa.gov/wmts/epsg4326/best
+REACT_APP_NASA_API_KEY=your_nasa_api_key_here
 
 # Feature Flags
 REACT_APP_ENABLE_ANALYTICS=false
 REACT_APP_ENABLE_AUTH=true
+REACT_APP_ENABLE_3D_MODELS=true
 ```
+
+**Getting NASA API Key:**
+1. Visit [NASA APIs Portal](https://api.nasa.gov/)
+2. Register for a free API key
+3. Add the key to your `.env` file
+4. Restart the development server
 
 ### **3️⃣ Public Assets**
 
@@ -372,10 +424,23 @@ ECI-Centauri-Frontend/
 │   ├── logo512.png
 │   ├── manifest.json                 # PWA manifest
 │   ├── robots.txt
+│   ├── eci-centauri-logo-blue.png    # Main logo
+│   ├── logo-escuela.jpg              # University logo
+│   ├── transit-exoplanet.gif         # Transit animation
 │   ├── space-image.png               # About Us background
 │   ├── jesus-profile-photo.jpg       # Team member photo
 │   ├── daniel-profile-photo.png      # Team member photo
-│   └── camilo-profile-photo.png      # Team member photo
+│   ├── camilo-profile-photo.png      # Team member photo
+│   └── exoplanets/                   # 3D GLTF models
+│       ├── exoplanet_1/
+│       │   ├── scene.gltf
+│       │   ├── scene.bin
+│       │   ├── textures/
+│       │   └── license.txt
+│       ├── exoplanet_2/
+│       ├── exoplanet_3/
+│       ├── exoplanet_4/
+│       └── exoplanet_5/
 │
 ├── src/
 │   ├── components/
@@ -383,21 +448,23 @@ ECI-Centauri-Frontend/
 │   │   │   ├── index.ts              # Barrel exports
 │   │   │   ├── StarsBg.tsx           # Animated star background
 │   │   │   ├── Header.tsx            # App navigation header
-│   │   │   ├── Footer.tsx            # Social media links
-│   │   │   └── Modals.tsx            # About Us & Share modals
+│   │   │   ├── Footer.tsx            # Social media links & university logo
+│   │   │   ├── Modals.tsx            # About Us & Share modals
+│   │   │   └── ReferencesModal.tsx   # Bibliography & references
 │   │   │
 │   │   └── dashboard/
 │   │       ├── index.ts              # Barrel exports
 │   │       ├── TransitLightCurve.tsx # Main chart component
 │   │       ├── AIPrediction.tsx      # Prediction results
-│   │       ├── QuickActions.tsx      # Action buttons
-│   │       ├── ModelSettings.tsx     # AI model configuration
+│   │       ├── QuickActions.tsx      # FITS upload with source selection
+│   │       ├── ModelSettings.tsx     # CNN model information
 │   │       ├── TodayStats.tsx        # Daily statistics
 │   │       ├── ModelPerformance.tsx  # Accuracy metrics
 │   │       ├── NewsPanel.tsx         # Community news
-│   │       ├── FactsCarousel.tsx     # Educational facts
-│   │       ├── ActionButtons.tsx     # Export & Share
-│   │       └── PlanetVisualization.tsx # 3D planet
+│   │       ├── FactsCarousel.tsx     # 11 educational facts
+│   │       ├── ActionButtons.tsx     # Export (CSV/XLSX) & Share
+│   │       ├── NASAImagery.tsx       # NASA WMTS Moon imagery
+│   │       └── PlanetVisualization.tsx # 3D GLTF exoplanet models
 │   │
 │   ├── pages/
 │   │   ├── index.ts                  # Barrel exports
@@ -702,6 +769,163 @@ npx vercel --prod
    ```bash
    npm run deploy
    ```
+
+---
+
+## 🆕 **New Features & Recent Updates**
+
+### **3D Exoplanet Visualization**
+The application now includes an interactive 3D model viewer featuring:
+- **5 High-quality GLTF models** of different exoplanets
+- **Automatic rotation** every 20 seconds between models
+- **Manual navigation** with numbered buttons (1-5)
+- **Optimized camera distances** for each model (Model 1 at 105%, Models 2-5 at 250% zoom)
+- **Interactive controls** with auto-rotation and camera orbit
+- **Loading indicators** and smooth transitions
+- **Model names** displayed with progress indicators
+
+**Technical Implementation:**
+- Uses Google Model Viewer 3.3.0 embedded in iframe
+- GLTF models stored in `public/exoplanets/exoplanet_1` through `exoplanet_5`
+- Each model includes: `scene.gltf`, `scene.bin`, textures folder, and license
+- NASA-themed gradient background with border styling
+- Height optimized at 320px (h-80) for visibility
+
+### **QR Code Sharing System**
+Enhanced the Share Discovery modal with dual sharing options:
+
+**Copy Link Feature:**
+- Generates unique session ID for each user
+- Format: `https://domain.com/?session={unique-id}`
+- One-click copy to clipboard with visual feedback
+- Session tracking for analytics
+
+**QR Code Feature:**
+- Auto-generates QR code when modal opens
+- **256x256 pixel resolution** for optimal scanning
+- **NASA blue colors** (#1e40af dark, #ffffff light)
+- **Download functionality** - save QR as PNG image
+- **Loading state** with spinner during generation
+- **Responsive layout** with white background for contrast
+
+**Technical Implementation:**
+- Uses `qrcode` library v1.5.4
+- Generates QR on modal open via useEffect hook
+- Maintains unique session ID using useState with initializer function
+- Error handling for QR generation failures
+
+### **NASA WMTS Integration**
+Real-time lunar imagery from NASA's Global Imagery Browse Services:
+
+**Features:**
+- **Web Map Tile Service (WMTS)** for Moon surface visualization
+- **Tile-based rendering** with proper coordinate system
+- **Configurable via environment variables** for API keys
+- **Error handling** for tile loading failures
+- **Responsive container** with gradient background
+
+**Technical Details:**
+- Base URL: `https://gibs.earthdata.nasa.gov/wmts/epsg4326/best`
+- Tile format: PNG with 256x256 resolution
+- Default coordinates: Zoom 0, Row 0, Col 0
+- Environment variable: `REACT_APP_NASA_WMTS_URL`
+
+### **FITS File Upload System**
+Specialized data upload for astronomical telescope missions:
+
+**Supported Formats:**
+- **.fits files only** (Flexible Image Transport System)
+- File validation with accept attribute
+- Visual feedback for selected files
+
+**Data Source Selection:**
+- **TESS** (Transiting Exoplanet Survey Satellite)
+- **Kepler** Space Telescope
+- **K2** Mission (Kepler's extended mission)
+- Interactive button selection with NASA-themed styling
+
+**UI Components:**
+- Modal with file input and drag-drop support
+- Source selection with visual indicators
+- Upload progress feedback
+- Cancel and confirm actions
+
+### **Export Format Selection**
+Professional data export with format options:
+
+**Available Formats:**
+- **CSV** - Comma-separated values
+  - Compatible with Excel and data analysis tools
+  - Lightweight and universal format
+- **XLSX** - Excel spreadsheet
+  - Native Excel format
+  - Supports formatting and multiple sheets
+  - Professional appearance
+
+**UI Design:**
+- Card-based format selection
+- Icons: FileText (CSV), FileSpreadsheet (XLSX)
+- Color coding: NASA blue (CSV), Green (XLSX)
+- Radio button-style selection
+- Detailed format descriptions
+
+### **References & Bibliography**
+Comprehensive academic references modal:
+
+**Content Structure:**
+- **21 Bibliographic References** in APA 7th Edition format
+- **3 AI/ML Tool Acknowledgments**
+- Organized sections with visual separation
+- NASA blue and standard blue color schemes
+
+**Reference Categories:**
+1. Exoplanet detection methodology
+2. Transit photometry techniques
+3. Machine learning applications
+4. NASA mission data (Kepler, TESS, K2)
+5. Data processing and analysis
+6. CNN architectures for astronomy
+
+**Technical Tools Cited:**
+- TensorFlow & Keras
+- Scikit-learn
+- NASA Exoplanet Archive
+
+### **Educational Content Updates**
+
+**11 Comprehensive Exoplanet Facts:**
+1. Over 5,000 confirmed exoplanets discovered
+2. Transit method explanation (planet crosses star)
+3. Kepler Space Telescope discoveries (2,700+ exoplanets)
+4. Super-Earths characteristics
+5. Hot Jupiters and their properties
+6. Habitable zone definition
+7. TRAPPIST-1 system (7 Earth-sized planets)
+8. AI/ML in exoplanet detection
+9. Proxima Centauri b proximity (4.24 light-years)
+10. Future missions: JWST and Nancy Grace Roman
+11. Citizen science contribution opportunities
+
+**Interactive Transit GIF:**
+- Visual demonstration of transit method
+- Clickable with GitHub repository attribution
+- External link opens in new tab
+- Responsive sizing and rounded styling
+
+### **Team Structure Updates**
+
+**Pyramid Organization:**
+- **Coach at top**: Full-width profile (Wilmer as coach)
+- **Row 1**: 3 team members in grid layout
+- **Row 2**: 3 team members in grid layout
+- Profile photos with GitHub links
+- Role-based filtering (coach vs members)
+
+**University Branding:**
+- Logo positioned near social media icons
+- Height: h-10 (40px) for consistency
+- Maintains aspect ratio
+- Grayscale filter with hover color transition
 
 ---
 
