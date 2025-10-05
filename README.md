@@ -927,6 +927,77 @@ Comprehensive academic references modal:
 - Maintains aspect ratio
 - Grayscale filter with hover color transition
 
+### **AI Chatbot - Starburst** 🤖✨
+
+**Interactive Space Guide:**
+A floating chatbot positioned in the bottom-right corner that helps users understand celestial objects and exoplanet detection using Claude AI.
+
+**Design Features:**
+- **Space Pet Mascot**: "Starburst" ✨ - friendly star character
+- **Floating Button**: Pulsing gradient button with online indicator
+- **Modern Chat Interface**: 
+  - 96px width × 600px height (expandable)
+  - Gradient header (purple to blue)
+  - Smooth animations and transitions
+  - Minimize/maximize functionality
+  - Auto-scroll to latest messages
+
+**UI Components:**
+- **Avatar**: Gradient star emoji (✨) with green online status
+- **Message Bubbles**: 
+  - User: Purple-blue gradient, right-aligned
+  - Bot: Dark slate with purple border, left-aligned
+- **Typing Indicator**: Animated dots during bot response
+- **Input Field**: Rounded with send button
+- **Timestamps**: Shows message time in 12-hour format
+
+**Functionality:**
+- **Object Classification**: Identifies asteroids, stars, comets, etc.
+- **Exoplanet Information**: Explains transit method and detection
+- **Educational Responses**: Teaches about NASA missions (Kepler, TESS, K2)
+- **Conversational AI**: Natural language understanding via Claude API
+- **Context Awareness**: Distinguishes between exoplanets and other objects
+
+**Claude AI Integration:**
+- Model: Claude 3 Sonnet (anthropic-version: 2023-06-01)
+- Max tokens: 1024 per response
+- Custom system prompt for space education
+- Error handling and fallback responses
+- Conversation history support
+
+**Technical Implementation:**
+- Component: `src/components/common/SpaceChatbot.tsx`
+- API Service: `src/services/claudeAPI.ts`
+- State Management: React hooks (useState, useEffect, useRef)
+- Animations: Tailwind CSS with custom transitions
+- Fixed positioning: `fixed bottom-6 right-6 z-50`
+
+**Environment Configuration:**
+```bash
+REACT_APP_CLAUDE_API_KEY=your_claude_api_key_here
+```
+
+**Getting Claude API Key:**
+1. Visit [Anthropic Console](https://console.anthropic.com/)
+2. Sign up or log in
+3. Navigate to API Keys section
+4. Create new API key
+5. Add to `.env` file
+6. Restart development server
+
+**Example Interactions:**
+- "What is an exoplanet?" → Explains exoplanets and transit method
+- "Is this an asteroid?" → Identifies object type and key differences
+- "Tell me about Kepler" → Information about NASA's Kepler mission
+- "How does the AI work?" → Explains CNN model and detection process
+
+**Accessibility:**
+- Keyboard navigation (Enter to send)
+- Focus management when opening
+- ARIA labels for screen readers
+- High contrast colors for readability
+- Responsive sizing for mobile devices
+
 ---
 
 ## 👥 **Development Team**
@@ -960,7 +1031,7 @@ Comprehensive academic references modal:
 
 ## 📄 **License**
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache-2.0 License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
