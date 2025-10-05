@@ -18,6 +18,11 @@ export const Footer: React.FC = () => (
           By <span className="text-nasa-400 font-semibold">ECI Centauri Team</span>
         </div>
         <div className="flex items-center gap-4">
+          <img 
+            src="/logo-escuela.jpg" 
+            alt="Universidad Logo" 
+            className="h-10 w-auto rounded"
+          />
           <a 
             href={ECI_URLS.website} 
             target="_blank" 

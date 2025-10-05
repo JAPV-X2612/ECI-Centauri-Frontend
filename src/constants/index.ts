@@ -26,6 +26,7 @@ export const EXOPLANET_FACTS: string[] = [
  * ECI Centauri team members information
  */
 export const TEAM_MEMBERS: TeamMember[] = [
+  { name: "Wilmer Edicson Garzón Alfonso", role: "Coach", photo: "WE", photoUrl: "/wilmer-profile-photo.jpeg" },
   { name: "Laura Sofia Zapata Sarmiento", github: "minisoffia", photo: "LS", photoUrl: "/sofia-profile-photo.jpg" },
   { name: "Juan Esteban Bolivar Muñoz", github: "jdev2443-cmd", photo: "JE", photoUrl: "/juan-profile-photo.jpg" },
   { name: "Camilo Andrés Maldonado López", github: "camilo-byte", photo: "CA", photoUrl: "/camilo-profile-photo.jpg" },
