@@ -3,15 +3,38 @@
  * NASA Space Apps Challenge 2025
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, ArrowLeft } from 'lucide-react';
 import { StarsBg } from '../components/common';
+import { useToast } from '../components/common/Toast';
 
 interface ForgotPasswordPageProps {
   onBackToLogin: () => void;
 }
 
 export const ForgotPasswordPage: React.FC<ForgotPasswordPageProps> = ({ onBackToLogin }) => {
+  const [email, setEmail] = useState('');
+  const { showToast } = useToast();
+
+  const handleResetPassword = () => {
+    if (!email) {
+      showToast('warning', 'Please enter your email address', 3000);
+      return;
+    }
+
+    // Validation: Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showToast('error', 'Please enter a valid email address', 3000);
+      return;
+    }
+
+    showToast('success', 'Password reset link sent! Check your email', 4000);
+    setTimeout(() => {
+      onBackToLogin();
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-nasa-900 to-slate-900 flex items-center justify-center p-6">
       <StarsBg />
@@ -37,12 +60,17 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordPageProps> = ({ onBackTo
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-slate-700/50 border border-nasa-500/20 rounded-lg pl-11 pr-4 py-3 text-white focus:outline-none focus:border-nasa-500"
                   placeholder="your.email@example.com"
                 />
               </div>
             </div>
-            <button className="w-full bg-gradient-to-r from-nasa-600 to-blue-600 hover:from-nasa-700 hover:to-blue-700 rounded-lg py-3 font-semibold transition-all shadow-lg">
+            <button 
+              onClick={handleResetPassword}
+              className="w-full bg-gradient-to-r from-nasa-600 to-blue-600 hover:from-nasa-700 hover:to-blue-700 rounded-lg py-3 font-semibold transition-all shadow-lg"
+            >
               Send Reset Link
             </button>
             <button
