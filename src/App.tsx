@@ -12,7 +12,8 @@
  */
 
 import React, { useState } from 'react';
-import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal, HelpModal, SpaceChatbot } from './components/common';
+import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal, HelpModal, SpaceChatbot, DashboardContentWrapper } from './components/common';
+import { ToastProvider } from './components/common/Toast';
 import { 
   TransitLightCurve, 
   AIPrediction, 
@@ -38,7 +39,6 @@ const ExoplanetHunterApp: React.FC = () => {
   
   // Analysis state
   const [confidence] = useState(87);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
   
   // Modal management
   const aboutModal = useModal();
@@ -51,14 +51,6 @@ const ExoplanetHunterApp: React.FC = () => {
   
   // User data
   const userData = MOCK_USER_DATA;
-
-  /**
-   * Handle demo analysis
-   */
-  const analyzeDemo = () => {
-    setIsAnalyzing(true);
-    setTimeout(() => setIsAnalyzing(false), 2000);
-  };
 
   /**
    * Handle share action
@@ -101,68 +93,79 @@ const ExoplanetHunterApp: React.FC = () => {
   // Render login page
   if (view === 'login') {
     return (
-      <LoginPage
-        onLogin={handleLogin}
-        onNavigateToSignup={() => setView('signup')}
-        onNavigateToForgot={() => setView('forgot')}
-        onContinueWithoutAccount={handleContinueWithoutAccount}
-      />
+      <ToastProvider>
+        <LoginPage
+          onLogin={handleLogin}
+          onNavigateToSignup={() => setView('signup')}
+          onNavigateToForgot={() => setView('forgot')}
+          onContinueWithoutAccount={handleContinueWithoutAccount}
+        />
+      </ToastProvider>
     );
   }
 
   // Render signup page
   if (view === 'signup') {
     return (
-      <SignupPage
-        onSignup={handleSignup}
-        onSwitchToLogin={() => setView('login')}
-      />
+      <ToastProvider>
+        <SignupPage
+          onSignup={handleSignup}
+          onSwitchToLogin={() => setView('login')}
+        />
+      </ToastProvider>
     );
   }
 
   // Render forgot password page
   if (view === 'forgot') {
     return (
-      <ForgotPasswordPage
-        onBackToLogin={() => setView('login')}
-      />
+      <ToastProvider>
+        <ForgotPasswordPage
+          onBackToLogin={() => setView('login')}
+        />
+      </ToastProvider>
     );
   }
 
   // Render profile page
   if (view === 'profile' && isLoggedIn) {
     return (
-      <ProfilePage
-        userData={userData}
-        analysisHistory={ANALYSIS_HISTORY}
-        achievements={ACHIEVEMENTS}
-        recentActivity={RECENT_ACTIVITY}
-        onBackToMain={() => setView('main')}
-        onSignOut={handleSignOut}
-      />
+      <ToastProvider>
+        <ProfilePage
+          userData={userData}
+          analysisHistory={ANALYSIS_HISTORY}
+          achievements={ACHIEVEMENTS}
+          recentActivity={RECENT_ACTIVITY}
+          onBackToMain={() => setView('main')}
+          onSignOut={handleSignOut}
+        />
+      </ToastProvider>
     );
   }
 
   // Main dashboard view
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
-      <StarsBg />
-      
-      <Header
-        isLoggedIn={isLoggedIn}
-        userData={isLoggedIn ? userData : undefined}
-        onHelpClick={helpModal.open}
-        onReferencesClick={referencesModal.open}
-        onAboutClick={aboutModal.open}
-        onSignInClick={() => setView('login')}
-        onProfileClick={() => setView('profile')}
-      />
-      
-      <main className="relative z-10 max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-12 gap-6">
-          {/* Left Sidebar */}
-          <div className="col-span-3 space-y-4">
-            <QuickActions onAnalyzeDemo={analyzeDemo} />
+    <ToastProvider>
+      <DashboardContentWrapper>
+        {(analyzeDemoWithToast) => (
+          <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+            <StarsBg />
+          
+            <Header
+              isLoggedIn={isLoggedIn}
+              userData={isLoggedIn ? userData : undefined}
+              onHelpClick={helpModal.open}
+              onReferencesClick={referencesModal.open}
+              onAboutClick={aboutModal.open}
+              onSignInClick={() => setView('login')}
+              onProfileClick={() => setView('profile')}
+            />
+          
+          <main className="relative z-10 max-w-7xl mx-auto px-6 py-8">
+            <div className="grid grid-cols-12 gap-6">
+              {/* Left Sidebar */}
+              <div className="col-span-3 space-y-4">
+                <QuickActions onAnalyzeDemo={analyzeDemoWithToast} />
             <PlanetVisualization />
             <TodayStats />
             <NASAImagery />
@@ -170,7 +173,7 @@ const ExoplanetHunterApp: React.FC = () => {
           
           {/* Center Content */}
           <div className="col-span-6 space-y-4">
-            <TransitLightCurve isAnalyzing={isAnalyzing} />
+            <TransitLightCurve isAnalyzing={false} />
             <AIPrediction confidence={confidence} />
             
             {/* Transit Exoplanet Animation */}
@@ -222,9 +225,12 @@ const ExoplanetHunterApp: React.FC = () => {
       <AboutUsModal isOpen={aboutModal.isOpen} onClose={aboutModal.close} />
       <ShareModal isOpen={shareModal.isOpen} onClose={shareModal.close} />
       
-      {/* AI Chatbot - Fixed Position */}
+      {/* AI Chatbot */}
       <SpaceChatbot />
-    </div>
+          </div>
+        )}
+      </DashboardContentWrapper>
+    </ToastProvider>
   );
 };
 

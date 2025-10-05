@@ -10,3 +10,4 @@ export { AboutUsModal, ShareModal } from './Modals';
 export { ReferencesModal } from './ReferencesModal';
 export { HelpModal } from './HelpModal';
 export { SpaceChatbot } from './SpaceChatbot';
+export { DashboardContentWrapper } from './DashboardContentWrapper';

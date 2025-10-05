@@ -5,6 +5,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Play, Upload, X, FileType } from 'lucide-react';
+import { useToast } from '../common/Toast';
 
 interface QuickActionsProps {
   onAnalyzeDemo: () => void;
@@ -20,13 +21,15 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
   const [selectedSource, setSelectedSource] = useState<DataSource>('Kepler');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { showToast } = useToast();
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file?.name.toLowerCase().endsWith('.fits')) {
       setSelectedFile(file);
+      showToast('info', `File "${file.name}" selected (${(file.size / 1024).toFixed(2)} KB)`, 3000);
     } else {
-      alert('Please select a valid FITS file (.fits extension)');
+      showToast('error', 'Invalid file type. Please select a valid FITS file (.fits extension)', 4000);
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
@@ -35,14 +38,27 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
 
   const handleUpload = () => {
     if (selectedFile) {
-      // Here you would handle the actual upload logic
-      console.log('Uploading file:', selectedFile.name, 'Source:', selectedSource);
-      alert(`File "${selectedFile.name}" ready to upload as ${selectedSource} data!`);
-      setShowUploadModal(false);
-      setSelectedFile(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
+      // Show loading toast
+      showToast('info', `Loading dataset "${selectedFile.name}"...`, 2000);
+      
+      // Simulate data upload process
+      setTimeout(() => {
+        // Simulate success or failure
+        const uploadSuccess = Math.random() > 0.1; // 90% éxito, 10% fallo
+        
+        if (uploadSuccess) {
+          showToast('success', `Dataset loaded successfully! Starting analysis...`, 3000);
+          console.log('Uploading file:', selectedFile.name, 'Source:', selectedSource);
+        } else {
+          showToast('error', `Failed to load dataset. Please check the file format and try again`, 4000);
+        }
+        
+        setShowUploadModal(false);
+        setSelectedFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      }, 1500);
     }
   };
 

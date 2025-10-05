@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Database, Mail, Lock, Eye, EyeOff, Award, Star } from 'lucide-react';
 import { StarsBg } from '../components/common';
+import { useToast } from '../components/common/Toast';
 
 interface LoginPageProps {
   onLogin: () => void;
@@ -24,6 +25,22 @@ export const LoginPage: React.FC<LoginPageProps> = ({
   onContinueWithoutAccount 
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { showToast } = useToast();
+
+  const handleLogin = () => {
+    // Validation of empty fields
+    if (!email || !password) {
+      showToast('warning', 'Please fill in all fields to continue', 3000);
+      return;
+    }
+
+    // Simulate login (you can add real validation here)
+    // For now, any email/password is valid
+    showToast('success', 'Login successful! Welcome back to Exoplanet Hunter AI', 3000);
+    onLogin();
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-nasa-900 to-slate-900 flex items-center justify-center p-6">
@@ -51,6 +68,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-slate-700/50 border border-nasa-500/20 rounded-lg pl-11 pr-4 py-3 text-white focus:outline-none focus:border-nasa-500 transition-colors"
                   placeholder="your.email@example.com"
                 />
@@ -63,6 +82,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-slate-700/50 border border-nasa-500/20 rounded-lg pl-11 pr-11 py-3 text-white focus:outline-none focus:border-nasa-500 transition-colors"
                   placeholder="••••••••"
                 />
@@ -87,7 +108,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             </div>
             
             <button
-              onClick={onLogin}
+              onClick={handleLogin}
               className="w-full bg-gradient-to-r from-nasa-600 to-blue-600 hover:from-nasa-700 hover:to-blue-700 rounded-lg py-3 font-semibold transition-all shadow-lg hover:shadow-nasa-500/50"
             >
               Sign In
