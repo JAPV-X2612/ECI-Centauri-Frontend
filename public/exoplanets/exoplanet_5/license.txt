@@ -1,0 +1,8 @@
+Model Information:
+* title:	Pixel Planet WISE 0855-0714
+* source:	https://sketchfab.com/3d-models/pixel-planet-wise-0855-0714-8cecd383290e417d8b03c900e5d908ef
+* author:	AstroJar (https://sketchfab.com/AstroJar)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
