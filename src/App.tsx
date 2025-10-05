@@ -12,7 +12,7 @@
  */
 
 import React, { useState } from 'react';
-import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal } from './components/common';
+import { StarsBg, Header, Footer, AboutUsModal, ShareModal, ReferencesModal, SpaceChatbot } from './components/common';
 import { 
   TransitLightCurve, 
   AIPrediction, 
@@ -218,6 +218,9 @@ const ExoplanetHunterApp: React.FC = () => {
       <ReferencesModal isOpen={referencesModal.isOpen} onClose={referencesModal.close} />
       <AboutUsModal isOpen={aboutModal.isOpen} onClose={aboutModal.close} />
       <ShareModal isOpen={shareModal.isOpen} onClose={shareModal.close} />
+      
+      {/* AI Chatbot - Fixed Position */}
+      <SpaceChatbot />
     </div>
   );
 };
