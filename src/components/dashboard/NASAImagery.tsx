@@ -3,7 +3,7 @@
  * NASA Space Apps Challenge 2025
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Satellite, ExternalLink } from 'lucide-react';
 
 interface ImageryData {
@@ -15,6 +15,7 @@ interface ImageryData {
   zoom: number; // Zoom level
   row: number; // Tile row
   col: number; // Tile col
+  mosaicImage: string; // Local preview image from public/mosaics
 }
 
 const IMAGERY_DATA: ImageryData[] = [
@@ -26,7 +27,8 @@ const IMAGERY_DATA: ImageryData[] = [
     tileFormat: "png",
     zoom: 0,
     row: 0,
-    col: 0
+    col: 0,
+    mosaicImage: "/mosaics/Apollo15_MetricCam_ClrShade_Global_1024ppd-120.png"
   },
   {
     title: "Apollo 15 Pan Camera - 25N",
@@ -36,7 +38,8 @@ const IMAGERY_DATA: ImageryData[] = [
     tileFormat: "png",
     zoom: 0,
     row: 0,
-    col: 0
+    col: 0,
+    mosaicImage: "/mosaics/Apollo15_PanCam_ClrShade_25N311E_5mp-120.png"
   },
   {
     title: "Apollo 15 Pan Camera - 28N",
@@ -46,7 +49,8 @@ const IMAGERY_DATA: ImageryData[] = [
     tileFormat: "png",
     zoom: 0,
     row: 0,
-    col: 0
+    col: 0,
+    mosaicImage: "/mosaics/Apollo15_PanCam_ClrShade_28N307E_3mp-120.png"
   },
   {
     title: "Apollo 16 Metric Camera",
@@ -56,42 +60,17 @@ const IMAGERY_DATA: ImageryData[] = [
     tileFormat: "png",
     zoom: 0,
     row: 0,
-    col: 0
+    col: 0,
+    mosaicImage: "/mosaics/Apollo16_MetricCam_ClrShade_Global_1024ppd-120.png"
   }
 ];
 
 /**
  * Displays a 2x2 collage of NASA Moon imagery from WMTS endpoints
+ * Uses local mosaic images for better display quality
  */
 export const NASAImagery: React.FC = () => {
-  const [loadingStates, setLoadingStates] = useState<Record<string, boolean>>(() => {
-    const initial: Record<string, boolean> = {};
-    IMAGERY_DATA.forEach(img => initial[img.endpoint] = true);
-    return initial;
-  });
-  const [errorStates, setErrorStates] = useState<Record<string, boolean>>(() => {
-    const initial: Record<string, boolean> = {};
-    IMAGERY_DATA.forEach(img => initial[img.endpoint] = false);
-    return initial;
-  });
-
   const baseUrl = process.env.REACT_APP_NASA_WMTS_BASE_URL || 'https://trek.nasa.gov/tiles/Moon/EQ';
-
-  const handleImageLoad = (endpoint: string) => {
-    setLoadingStates(prev => ({ ...prev, [endpoint]: false }));
-  };
-
-  const handleImageError = (endpoint: string) => {
-    setErrorStates(prev => ({ ...prev, [endpoint]: true }));
-    setLoadingStates(prev => ({ ...prev, [endpoint]: false }));
-  };
-
-  const getImageUrl = (endpoint: string, tileFormat: string, zoom: number, row: number, col: number) => {
-    // NASA WMTS URL format: {baseUrl}/{endpoint}/1.0.0/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.{format}
-    // Using specified zoom level and tile coordinates
-    // Style: default, TileMatrixSet: default028mm
-    return `${baseUrl}/${endpoint}/1.0.0/default/default028mm/${zoom}/${row}/${col}.${tileFormat}`;
-  };
 
   const openWMTSService = (endpoint: string) => {
     // Open the NASA Trek HTML page for the service
@@ -125,27 +104,12 @@ export const NASAImagery: React.FC = () => {
             title={`Click to view ${imagery.title} WMTS service`}
           >
             <div className="aspect-square relative">
-              {loadingStates[imagery.endpoint] && !errorStates[imagery.endpoint] && (
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/50">
-                  <div className="w-8 h-8 border-4 border-nasa-400 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              )}
-              
-              {errorStates[imagery.endpoint] ? (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/50 p-3">
-                  <Satellite className="w-8 h-8 text-gray-500 mb-2" />
-                  <p className="text-xs text-gray-400 text-center">Preview unavailable</p>
-                  <p className="text-xs text-nasa-400 mt-1">Click to view WMTS</p>
-                </div>
-              ) : (
-                <img
-                  src={getImageUrl(imagery.endpoint, imagery.tileFormat, imagery.zoom, imagery.row, imagery.col)}
-                  alt={imagery.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  onLoad={() => handleImageLoad(imagery.endpoint)}
-                  onError={() => handleImageError(imagery.endpoint)}
-                />
-              )}
+              {/* Display local mosaic image instead of API tile */}
+              <img
+                src={imagery.mosaicImage}
+                alt={imagery.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
 
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
@@ -157,6 +121,7 @@ export const NASAImagery: React.FC = () => {
             {/* Footer label */}
             <div className="p-2 bg-slate-900/50">
               <p className="text-xs text-gray-400 truncate">{imagery.description}</p>
+              <p className="text-xs text-nasa-400 mt-1">🔗 Click to explore NASA API</p>
             </div>
           </div>
         ))}
