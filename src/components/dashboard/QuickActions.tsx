@@ -11,7 +11,7 @@ interface QuickActionsProps {
   onAnalyzeDemo: () => void;
 }
 
-type DataSource = 'TESS' | 'Kepler' | 'K2';
+type DataSource = 'TESS' | 'Kepler';
 
 /**
  * Quick action panel with demo analysis and data upload buttons
@@ -113,8 +113,8 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
                 <label className="text-sm text-gray-300 mb-2 block font-medium">
                   Data Source
                 </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {(['TESS', 'Kepler', 'K2'] as DataSource[]).map((source) => (
+                <div className="grid grid-cols-2 gap-2">
+                  {(['TESS', 'Kepler'] as DataSource[]).map((source) => (
                     <button
                       key={source}
                       onClick={() => setSelectedSource(source)}
