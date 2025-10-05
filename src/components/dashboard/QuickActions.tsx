@@ -20,6 +20,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [selectedSource, setSelectedSource] = useState<DataSource>('Kepler');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [exoplanetId, setExoplanetId] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { showToast } = useToast();
 
@@ -37,28 +38,43 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
   };
 
   const handleUpload = () => {
-    if (selectedFile) {
+    if (selectedFile && exoplanetId.trim()) {
       // Show loading toast
       showToast('info', `Loading dataset "${selectedFile.name}"...`, 2000);
       
-      // Simulate data upload process
+      // Simulate data upload and verification process
       setTimeout(() => {
         // Simulate success or failure
-        const uploadSuccess = Math.random() > 0.1; // 90% éxito, 10% fallo
+        const uploadSuccess = Math.random() > 0.1; // 90% success rate
         
         if (uploadSuccess) {
-          showToast('success', `Dataset loaded successfully! Starting analysis...`, 3000);
-          console.log('Uploading file:', selectedFile.name, 'Source:', selectedSource);
+          showToast('success', `Dataset loaded successfully! Verifying ID: ${exoplanetId}...`, 3000);
+          console.log('Uploading file:', selectedFile.name, 'Source:', selectedSource, 'ID:', exoplanetId);
+          
+          // Simulate verification
+          setTimeout(() => {
+            const isExoplanet = Math.random() > 0.3; // 70% chance of being exoplanet
+            if (isExoplanet) {
+              showToast('success', `✓ Confirmed: ID ${exoplanetId} is an exoplanet candidate!`, 4000);
+            } else {
+              showToast('warning', `ID ${exoplanetId} does not match exoplanet criteria`, 4000);
+            }
+          }, 3500);
         } else {
           showToast('error', `Failed to load dataset. Please check the file format and try again`, 4000);
         }
         
         setShowUploadModal(false);
         setSelectedFile(null);
+        setExoplanetId('');
         if (fileInputRef.current) {
           fileInputRef.current.value = '';
         }
       }, 1500);
+    } else if (!selectedFile) {
+      showToast('warning', 'Please select a FITS file first', 3000);
+    } else if (!exoplanetId.trim()) {
+      showToast('warning', 'Please enter an Exoplanet ID to verify', 3000);
     }
   };
 
@@ -96,6 +112,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
                 onClick={() => {
                   setShowUploadModal(false);
                   setSelectedFile(null);
+                  setExoplanetId('');
                   if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                   }
@@ -148,6 +165,25 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
                 </p>
               </div>
 
+              {/* Exoplanet ID Input - Only show if file is selected */}
+              {selectedFile && (
+                <div>
+                  <label className="text-sm text-gray-300 mb-2 block font-medium">
+                    Exoplanet ID <span className="text-nasa-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={exoplanetId}
+                    onChange={(e) => setExoplanetId(e.target.value)}
+                    placeholder={`e.g., ${selectedSource === 'Kepler' ? 'K2-18 b' : 'TOI-700 d'}`}
+                    className="w-full px-4 py-2 bg-slate-700/50 border border-nasa-500/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-nasa-500 focus:ring-1 focus:ring-nasa-500 transition-all"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Enter the {selectedSource} ID to verify if it's an exoplanet candidate
+                  </p>
+                </div>
+              )}
+
               {/* Selected File Info */}
               {selectedFile && (
                 <div className="bg-slate-700/50 rounded-lg p-3 border border-nasa-500/20">
@@ -165,6 +201,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
                   onClick={() => {
                     setShowUploadModal(false);
                     setSelectedFile(null);
+                    setExoplanetId('');
                     if (fileInputRef.current) {
                       fileInputRef.current.value = '';
                     }
@@ -175,14 +212,14 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
                 </button>
                 <button
                   onClick={handleUpload}
-                  disabled={!selectedFile}
+                  disabled={!selectedFile || !exoplanetId.trim()}
                   className={`flex-1 rounded-lg py-2 px-4 text-sm font-medium transition-all ${
-                    selectedFile
+                    selectedFile && exoplanetId.trim()
                       ? 'bg-gradient-to-r from-nasa-600 to-blue-600 hover:from-nasa-700 hover:to-blue-700 text-white'
                       : 'bg-slate-700/30 text-gray-500 cursor-not-allowed'
                   }`}
                 >
-                  Upload
+                  Upload & Verify
                 </button>
               </div>
             </div>
