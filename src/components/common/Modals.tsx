@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { X, Github, Share2, Copy, Check } from 'lucide-react';
+import { X, Github, Linkedin, Share2, Copy, Check } from 'lucide-react';
 import QRCode from 'qrcode';
 import { TEAM_MEMBERS } from '../../constants';
 
@@ -39,30 +39,41 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
           
           {/* Pyramid Layout: Coach at top, then 3-3 team members */}
           <div className="space-y-6">
-            {/* Coach - Top of pyramid */}
+            {/* Coach - Top of pyramid - CENTERED */}
             {TEAM_MEMBERS.filter(member => member.role === 'Coach').map((member) => (
-              <div key={member.name} className="bg-slate-700/50 rounded-xl p-4 border border-nasa-400/50 max-w-2xl mx-auto">
-                <div className="flex items-center gap-4">
+              <div key={member.name} className="bg-slate-700/50 rounded-xl p-6 border border-nasa-400/50 max-w-2xl mx-auto">
+                <div className="flex flex-col items-center text-center gap-4">
                   {member.photoUrl ? (
                     <img 
                       src={member.photoUrl} 
                       alt={`${member.name} profile`}
-                      className="w-20 h-20 rounded-full object-cover border-2 border-nasa-400"
+                      className="w-24 h-24 rounded-full object-cover border-2 border-nasa-400"
                     />
                   ) : (
-                    <div className="w-20 h-20 bg-gradient-to-br from-nasa-600 to-nasa-400 rounded-full flex items-center justify-center text-lg font-bold">
+                    <div className="w-24 h-24 bg-gradient-to-br from-nasa-600 to-nasa-400 rounded-full flex items-center justify-center text-xl font-bold">
                       {member.photo}
                     </div>
                   )}
                   <div className="flex-1">
-                    <div className="font-semibold text-white text-lg">{member.name}</div>
-                    <div className="text-sm font-medium text-nasa-400 mb-1">
+                    <div className="font-semibold text-white text-xl">{member.name}</div>
+                    <div className="text-sm font-medium text-nasa-400 mt-1">
                       {member.role}
                     </div>
-                    <div className="text-sm text-gray-400">
+                    <div className="text-sm text-gray-400 mt-1">
                       Team Mentor & Advisor
                     </div>
-                    <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
+                    {member.linkedin && (
+                      <a 
+                        href={member.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs text-blue-400 hover:text-blue-300 inline-flex items-center gap-1 mt-3"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" />
+                        LinkedIn Profile
+                      </a>
+                    )}
+                    <div className="text-xs text-gray-300 mt-2">🇨🇴 Colombia</div>
                   </div>
                 </div>
               </div>
@@ -86,17 +97,30 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
                     )}
                     <div className="flex-1">
                       <div className="font-semibold text-white text-sm">{member.name}</div>
-                      {member.github && (
-                        <a 
-                          href={`https://github.com/${member.github}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 mt-1"
-                        >
-                          <Github className="w-3 h-3" />
-                          {member.github}
-                        </a>
-                      )}
+                      <div className="flex flex-col items-center gap-1 mt-1">
+                        {member.github && (
+                          <a 
+                            href={`https://github.com/${member.github}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Github className="w-3 h-3" />
+                            {member.github}
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a 
+                            href={member.linkedin} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Linkedin className="w-3 h-3" />
+                            LinkedIn
+                          </a>
+                        )}
+                      </div>
                       <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
                     </div>
                   </div>
@@ -122,17 +146,30 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
                     )}
                     <div className="flex-1">
                       <div className="font-semibold text-white text-sm">{member.name}</div>
-                      {member.github && (
-                        <a 
-                          href={`https://github.com/${member.github}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 mt-1"
-                        >
-                          <Github className="w-3 h-3" />
-                          {member.github}
-                        </a>
-                      )}
+                      <div className="flex flex-col items-center gap-1 mt-1">
+                        {member.github && (
+                          <a 
+                            href={`https://github.com/${member.github}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Github className="w-3 h-3" />
+                            {member.github}
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a 
+                            href={member.linkedin} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Linkedin className="w-3 h-3" />
+                            LinkedIn
+                          </a>
+                        )}
+                      </div>
                       <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
                     </div>
                   </div>
