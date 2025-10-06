@@ -1,5 +1,16 @@
 # 🌌 Exoplanet Hunter AI - Frontend
 
+## 🔗 Quick Links
+
+- 📱 **Frontend Repository:** [https://github.com/JAPV-X2612/ECI-Centauri-Frontend](https://github.com/JAPV-X2612/ECI-Centauri-Frontend)
+- ⚙️ **Backend Repository:** [https://github.com/JAPV-X2612/ECI-Centauri-Backend](https://github.com/JAPV-X2612/ECI-Centauri-Backend)
+- 🤖 **ML Model Repository:** [https://github.com/Ch0comilo/astronet-cnn-v3](https://github.com/Ch0comilo/astronet-cnn-v3)
+- 🎥 **Video Demo:** [https://youtu.be/tt-aPG_QBJA](https://youtu.be/tt-aPG_QBJA)
+- 🚀 **Backend Deployment (Azure):** [https://eci-centauri-backend-prod-gtetg7hzfnhfbwep.chilecentral-01.azurewebsites.net/docs](https://eci-centauri-backend-prod-gtetg7hzfnhfbwep.chilecentral-01.azurewebsites.net/docs)
+- 🌐 **Frontend Deployment (Vercel):** [URL_PENDING]
+
+---
+
 <!-- Logo placeholder -->
 <div align="center">
   <img src="public/eci-centauri-logo-blue.png" alt="ECI Centauri - Exoplanet Hunter AI Logo" width="30%">
@@ -17,6 +28,11 @@
 
 ---
 
+<div align="center">
+  <img src="/public/exoplanet-hunter-ia.png" alt="Exoplanet Hunter IA" width="60%" height="auto">
+</div>
+
+---
 ## 📋 **Table of Contents**
 
 - [Overview](#-overview)
@@ -115,7 +131,7 @@ The application features a **NASA-themed dark blue design**, **responsive UI**, 
   - 21 bibliographic references in APA 7th format
   - 3 AI/ML tool acknowledgments
   - Organized by categories
-  
+
 ### 🎬 **Interactive Elements**
 - **Transit GIF visualization** with clickable GitHub attribution
 - **Animated star background** for immersive space experience
@@ -630,9 +646,9 @@ Edit `src/constants/index.ts`:
 ```typescript
 export const TEAM_MEMBERS: TeamMember[] = [
   // ... existing members
-  { 
-    name: "New Member Name", 
-    github: "github-username", 
+  {
+    name: "New Member Name",
+    github: "github-username",
     photo: "NMN",
     photoUrl: "/new-member-photo.jpg" // Optional
   }
@@ -658,8 +674,8 @@ Edit `src/components/dashboard/ModelSettings.tsx`:
 
 ```typescript
 <select>
-  <option>Your Custom Model</option>
-  <option>Another Model</option>
+        <option>Your Custom Model</option>
+<option>Another Model</option>
 </select>
 ```
 
@@ -935,7 +951,7 @@ A floating chatbot positioned in the bottom-right corner that helps users unders
 **Design Features:**
 - **Space Pet Mascot**: "Starburst" ✨ - friendly star character
 - **Floating Button**: Pulsing gradient button with online indicator
-- **Modern Chat Interface**: 
+- **Modern Chat Interface**:
   - 96px width × 600px height (expandable)
   - Gradient header (purple to blue)
   - Smooth animations and transitions
@@ -944,7 +960,7 @@ A floating chatbot positioned in the bottom-right corner that helps users unders
 
 **UI Components:**
 - **Avatar**: Gradient star emoji (✨) with green online status
-- **Message Bubbles**: 
+- **Message Bubbles**:
   - User: Purple-blue gradient, right-aligned
   - Bot: Dark slate with purple border, left-aligned
 - **Typing Indicator**: Animated dots during bot response
