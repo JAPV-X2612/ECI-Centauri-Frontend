@@ -19,7 +19,7 @@ export const Footer: React.FC = () => (
         </div>
         <div className="flex items-center gap-4">
           <img 
-            src="/logo-escuela.jpg" 
+            src="/logo-eci.png"
             alt="Universidad Logo" 
             className="h-10 w-auto rounded"
           />
