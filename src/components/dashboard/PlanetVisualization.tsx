@@ -15,7 +15,7 @@ const EXOPLANET_MODELS = [
   { id: 5, name: 'Exoplanet Epsilon', path: '/exoplanets/exoplanet_5/scene.gltf' }
 ];
 
-const MODEL_ROTATION_INTERVAL = 20000; // 20 seconds
+const MODEL_ROTATION_INTERVAL = 60000; // 60 seconds
 
 /**
  * 3D exoplanet model viewer with automatic rotation

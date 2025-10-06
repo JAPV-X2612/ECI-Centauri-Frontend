@@ -35,7 +35,7 @@ import type { ViewType } from './types';
 
 const ExoplanetHunterApp: React.FC = () => {
   // View state management
-  const [view, setView] = useState<ViewType>('login');
+  const [view, setView] = useState<ViewType>('main');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   // Analysis state
