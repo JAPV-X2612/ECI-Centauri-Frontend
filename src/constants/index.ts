@@ -26,13 +26,13 @@ export const EXOPLANET_FACTS: string[] = [
  * ECI Centauri team members information
  */
 export const TEAM_MEMBERS: TeamMember[] = [
-  { name: "Wilmer Edicson Garzón Alfonso", role: "Coach", photo: "WE", photoUrl: "/wilmer-profile-photo.jpeg" },
-  { name: "Laura Sofia Zapata Sarmiento", github: "minisoffia", photo: "LS", photoUrl: "/sofia-profile-photo.jpg" },
-  { name: "Juan Esteban Bolivar Muñoz", github: "jdev2443-cmd", photo: "JE", photoUrl: "/juan-profile-photo.jpg" },
-  { name: "Camilo Andrés Maldonado López", github: "camilo-byte", photo: "CA", photoUrl: "/camilo-profile-photo.jpg" },
-  { name: "Daniel Felipe Martinez Hernandez", github: "Ch0comilo", photo: "DF", photoUrl: "/daniel-profile-photo.png" },
-  { name: "Jesús Alfonso Pinzón Vega", github: "JAPV-X2612", photo: "JA", photoUrl: "/jesus-profile-photo.jpg" },
-  { name: "Andersson David Sánchez Méndez", github: "AnderssonProgramming", photo: "AD", photoUrl: "/andersson-profile-photo.jpeg" }
+  { name: "Wilmer Edicson Garzón Alfonso", role: "Coach", photo: "WE", photoUrl: "/wilmer-profile-photo.jpeg", linkedin: "https://www.linkedin.com/in/wegalfonso/" },
+  { name: "Laura Sofia Zapata Sarmiento", github: "minisoffia", photo: "LS", photoUrl: "/sofia-profile-photo.jpg", linkedin: "http://www.linkedin.com/in/sofia-zapata-5789b5205" },
+  { name: "Juan Esteban Bolivar Muñoz", github: "jdev2443-cmd", photo: "JE", photoUrl: "/juan-profile-photo.jpg", linkedin: "https://www.linkedin.com/in/juan-esteban-bolívar-828798388" },
+  { name: "Camilo Andrés Maldonado López", github: "camilo-byte", photo: "CA", photoUrl: "/camilo-profile-photo.jpg", linkedin: "http://linkedin.com/in/camilo-maldonado-lópez-317533127" },
+  { name: "Daniel Felipe Martinez Hernandez", github: "Ch0comilo", photo: "DF", photoUrl: "/daniel-profile-photo.png", linkedin: "https://www.linkedin.com/in/daniel-felipe-martinez-hernandez-898b98206/" },
+  { name: "Jesús Alfonso Pinzón Vega", github: "JAPV-X2612", photo: "JA", photoUrl: "/jesus-profile-photo.jpg", linkedin: "https://www.linkedin.com/in/jesus-alfonso-pinzon-vega" },
+  { name: "Andersson David Sánchez Méndez", github: "AnderssonProgramming", photo: "AD", photoUrl: "/andersson-profile-photo.jpeg", linkedin: "https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194" }
 ];
 
 /**

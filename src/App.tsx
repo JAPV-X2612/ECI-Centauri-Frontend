@@ -25,7 +25,8 @@ import {
   FactsCarousel, 
   ActionButtons, 
   PlanetVisualization,
-  NASAImagery 
+  NASAImagery,
+  CarbonFootprint
 } from './components/dashboard';
 import { LoginPage, SignupPage, ForgotPasswordPage, ProfilePage } from './pages';
 import { useCyclicIndex, useModal } from './hooks';
@@ -167,7 +168,7 @@ const ExoplanetHunterApp: React.FC = () => {
               <div className="col-span-3 space-y-4">
                 <QuickActions onAnalyzeDemo={analyzeDemoWithToast} />
             <PlanetVisualization />
-            <TodayStats />
+            <CarbonFootprint />
             <NASAImagery />
           </div>
           
@@ -204,6 +205,7 @@ const ExoplanetHunterApp: React.FC = () => {
           
           {/* Right Sidebar */}
           <div className="col-span-3 space-y-4">
+            <TodayStats />
             <ModelPerformance />
             <ModelSettings />
             <NewsPanel />
