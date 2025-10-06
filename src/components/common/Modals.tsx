@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { X, Github, Share2, Copy, Check } from 'lucide-react';
+import { X, Github, Linkedin, Share2, Copy, Check } from 'lucide-react';
 import QRCode from 'qrcode';
 import { TEAM_MEMBERS } from '../../constants';
 
@@ -62,6 +62,17 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
                     <div className="text-sm text-gray-400">
                       Team Mentor & Advisor
                     </div>
+                    {member.linkedin && (
+                      <a 
+                        href={member.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs text-blue-400 hover:text-blue-300 inline-flex items-center gap-1 mt-2"
+                      >
+                        <Linkedin className="w-3 h-3" />
+                        LinkedIn Profile
+                      </a>
+                    )}
                     <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
                   </div>
                 </div>
@@ -86,17 +97,30 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
                     )}
                     <div className="flex-1">
                       <div className="font-semibold text-white text-sm">{member.name}</div>
-                      {member.github && (
-                        <a 
-                          href={`https://github.com/${member.github}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 mt-1"
-                        >
-                          <Github className="w-3 h-3" />
-                          {member.github}
-                        </a>
-                      )}
+                      <div className="flex flex-col items-center gap-1 mt-1">
+                        {member.github && (
+                          <a 
+                            href={`https://github.com/${member.github}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Github className="w-3 h-3" />
+                            {member.github}
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a 
+                            href={member.linkedin} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Linkedin className="w-3 h-3" />
+                            LinkedIn
+                          </a>
+                        )}
+                      </div>
                       <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
                     </div>
                   </div>
@@ -122,17 +146,30 @@ export const AboutUsModal: React.FC<AboutUsModalProps> = ({ isOpen, onClose }) =
                     )}
                     <div className="flex-1">
                       <div className="font-semibold text-white text-sm">{member.name}</div>
-                      {member.github && (
-                        <a 
-                          href={`https://github.com/${member.github}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 mt-1"
-                        >
-                          <Github className="w-3 h-3" />
-                          {member.github}
-                        </a>
-                      )}
+                      <div className="flex flex-col items-center gap-1 mt-1">
+                        {member.github && (
+                          <a 
+                            href={`https://github.com/${member.github}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Github className="w-3 h-3" />
+                            {member.github}
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a 
+                            href={member.linkedin} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-xs text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1"
+                          >
+                            <Linkedin className="w-3 h-3" />
+                            LinkedIn
+                          </a>
+                        )}
+                      </div>
                       <div className="text-xs text-gray-300 mt-1">🇨🇴 Colombia</div>
                     </div>
                   </div>
