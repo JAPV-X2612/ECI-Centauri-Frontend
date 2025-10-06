@@ -41,6 +41,9 @@ const ExoplanetHunterApp: React.FC = () => {
   // Analysis state
   const [confidence] = useState(87);
   
+  // Uploaded images state for Transit Light Curve
+  const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  
   // Modal management
   const aboutModal = useModal();
   const helpModal = useModal();
@@ -52,6 +55,18 @@ const ExoplanetHunterApp: React.FC = () => {
   
   // User data
   const userData = MOCK_USER_DATA;
+
+  /**
+   * Handle successful upload - load test images
+   */
+  const handleUploadSuccess = () => {
+    const testImages = [
+      '/test-0.png',
+      '/test-1.png',
+      '/test-2.png'
+    ];
+    setUploadedImages(testImages);
+  };
 
   /**
    * Handle share action
@@ -166,7 +181,10 @@ const ExoplanetHunterApp: React.FC = () => {
             <div className="grid grid-cols-12 gap-6">
               {/* Left Sidebar */}
               <div className="col-span-3 space-y-4">
-                <QuickActions onAnalyzeDemo={analyzeDemoWithToast} />
+                <QuickActions 
+                  onAnalyzeDemo={analyzeDemoWithToast} 
+                  onUploadSuccess={handleUploadSuccess}
+                />
             <PlanetVisualization />
             <CarbonFootprint />
             <NASAImagery />
@@ -174,7 +192,10 @@ const ExoplanetHunterApp: React.FC = () => {
           
           {/* Center Content */}
           <div className="col-span-6 space-y-4">
-            <TransitLightCurve isAnalyzing={false} />
+            <TransitLightCurve 
+              isAnalyzing={false} 
+              uploadedImages={uploadedImages.length > 0 ? uploadedImages : undefined}
+            />
             <AIPrediction confidence={confidence} />
             
             {/* Transit Exoplanet Animation */}

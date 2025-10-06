@@ -9,6 +9,7 @@ import { useToast } from '../common/Toast';
 
 interface QuickActionsProps {
   onAnalyzeDemo: () => void;
+  onUploadSuccess?: () => void; // Callback for successful upload to load images
 }
 
 type DataSource = 'TESS' | 'Kepler';
@@ -16,7 +17,7 @@ type DataSource = 'TESS' | 'Kepler';
 /**
  * Quick action panel with demo analysis and data upload buttons
  */
-export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => {
+export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo, onUploadSuccess }) => {
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [selectedSource, setSelectedSource] = useState<DataSource>('Kepler');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -59,6 +60,13 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onAnalyzeDemo }) => 
             } else {
               showToast('warning', `ID ${exoplanetId} does not match exoplanet criteria`, 4000);
             }
+            
+            // Load images after 2 seconds from verification toast
+            setTimeout(() => {
+              if (onUploadSuccess) {
+                onUploadSuccess();
+              }
+            }, 2000);
           }, 3500);
         } else {
           showToast('error', `Failed to load dataset. Please check the file format and try again`, 4000);
