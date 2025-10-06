@@ -63,7 +63,8 @@ const ExoplanetHunterApp: React.FC = () => {
     const testImages = [
       '/test-0.png',
       '/test-1.png',
-      '/test-2.png'
+      '/test-2.png',
+      '/test-3.png'
     ];
     setUploadedImages(testImages);
   };
