@@ -6,7 +6,7 @@
 - ⚙️ **Backend Repository:** [https://github.com/JAPV-X2612/ECI-Centauri-Backend](https://github.com/JAPV-X2612/ECI-Centauri-Backend)
 - 🤖 **ML Model Repository:** [https://github.com/Ch0comilo/astronet-cnn-v3](https://github.com/Ch0comilo/astronet-cnn-v3)
 - 🎥 **Video Demo:** [https://youtu.be/tt-aPG_QBJA](https://youtu.be/tt-aPG_QBJA)
-- 🚀 **Backend Deployment (Azure):** [https://eci-centauri-backend-prod-gtetg7hzfnhfbwep.chilecentral-01.azurewebsites.net/docs](https://eci-centauri-backend-prod-gtetg7hzfnhfbwep.chilecentral-01.azurewebsites.net/docs)
+- 🚀 **Backend Deployment (Vercel):** [URL_PENDING]
 - 🌐 **Frontend Deployment (Vercel):** [URL_PENDING]
 
 ---
@@ -22,7 +22,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Lucide Icons](https://img.shields.io/badge/Lucide-Icons-F56565?style=for-the-badge&logo=lucide&logoColor=white)
-![Azure](https://img.shields.io/badge/Azure-Static_Web_Apps-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 </div>
 
@@ -180,7 +180,7 @@ The project follows a **component-based architecture** optimized for React:
                 │ HTTP/HTTPS
                 ↓
 ┌────────────────────────────────────────────┐
-│      React Application (SPA) - Azure       │
+│      React Application (SPA) - Vercel      │
 │  ┌──────────────────────────────────────┐  │
 │  │        Pages (View Layer)            │  │
 │  │  Login, Signup, Profile, Dashboard   │  │
@@ -205,7 +205,7 @@ The project follows a **component-based architecture** optimized for React:
                 ↓
 ┌────────────────────────────────────────────┐
 │       FastAPI Backend (REST API)           │
-│           App Service (Azure)              │
+│      Vercel (Serverless Function)          │
 └────────────────────────────────────────────┘
 ```
 
@@ -735,23 +735,23 @@ NODE_OPTIONS=--max-old-space-size=4096 npm run build
 
 ## 🚢 **Deployment**
 
-### **Azure Static Web Apps**
+### **Vercel** _(primary deployment target)_
 
-1. **Create Static Web App** in Azure Portal
-2. **Connect to GitHub** repository
-3. **Configure build settings:**
-   ```yaml
-   app_location: "/"
-   api_location: ""
-   output_location: "build"
-   app_build_command: "npm run build"
-   ```
-4. **Set environment variables** in Azure Portal (Configuration)
-5. **Push to GitHub** - automatic deployment via GitHub Actions
+1. **Import the repository** at [vercel.com/new](https://vercel.com/new)
+2. **Framework preset:** Create React App (auto-detected)
+3. **Set environment variables** in Project Settings → Environment Variables (see [Configuration](#-configuration) above)
+4. **Push to `main`** — Vercel's GitHub integration builds and deploys automatically
 
-**Detailed guide:** [Azure Static Web Apps Documentation](https://learn.microsoft.com/en-us/azure/static-web-apps/)
+Or deploy manually from the CLI:
 
-### **Netlify**
+```bash
+npm run build
+npx vercel --prod
+```
+
+**Detailed guide:** [Vercel Documentation](https://vercel.com/docs)
+
+### **Netlify** _(alternative)_
 
 ```bash
 npm run build
@@ -1057,7 +1057,7 @@ This project is licensed under the **Apache-2.0 License** - see the [LICENSE](LI
 - **React Team** for the amazing framework
 - **Tailwind Labs** for the CSS framework
 - **Lucide** for the beautiful icon library
-- **Microsoft Azure** for hosting infrastructure
+- **Vercel** for hosting infrastructure
 - **Create React App** team for the excellent tooling
 
 ---
